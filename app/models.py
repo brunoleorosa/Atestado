@@ -5,6 +5,8 @@ from datetime import datetime
 class Empresa(models.Model):
     nome = models.CharField(max_length=30)
     cnpj = models.CharField(max_length=18)
+    def __str__(self):
+        return self.nome
 
 class Atestados(models.Model):
     numero_documento = models.CharField(max_length=30)
