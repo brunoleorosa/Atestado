@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from app.forms import AtestadosForm
 from app.models import Atestados
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,7 @@ def form(request):
 
 # Função para cadastrar atestados
 def create(request):
-    form = AtestadosForm(request.POST or None)
+    form = AtestadosForm(request.POST, request.FILES or None)
     if form.is_valid():
         form.save()
         return redirect('home')

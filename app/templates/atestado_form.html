@@ -19,7 +19,7 @@
     <!-- Formulário cadastro/atualização de atestados -->
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <div id="result"></div>
-        <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+        <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="text">Nº Documento</div>
             <div class="form-group pb-3">{{form.numero_documento}}</div>
@@ -31,6 +31,7 @@
             <div class="form-group pb-3">{{form.empresa}}</div>
             <div class="text">Cliente</div>
             <div class="form-group pb-3">{{form.cliente}}</div>
+            {{form.documento_pdf}}<br><br>
             <input type="submit" class="btn btn-success">
         </form>
     </div>
