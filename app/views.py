@@ -38,7 +38,7 @@ def edit(request, pk):
 def update(request, pk):
     data = {}
     data['db'] = Atestados.objects.get(pk=pk)
-    form = AtestadosForm(request.POST or None, instance=data['db'])
+    form = AtestadosForm(request.POST, request.FILES or None, instance=data['db'])
     if form.is_valid():
         form.save()
         return redirect('home')
